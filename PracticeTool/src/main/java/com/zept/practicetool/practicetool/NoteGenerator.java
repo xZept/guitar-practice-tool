@@ -36,6 +36,7 @@ public class NoteGenerator extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Note Generator");
+        setResizable(false);
 
         lblTime.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         lblTime.setText("Time:");
@@ -48,7 +49,7 @@ public class NoteGenerator extends javax.swing.JFrame {
         lblTimer.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblTimer.setText("-");
 
-        btnNext.setBackground(new java.awt.Color(0, 0, 204));
+        btnNext.setBackground(new java.awt.Color(0, 0, 255));
         btnNext.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
         btnNext.setText("NEXT");
 

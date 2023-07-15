@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.zept.practicetool.practicetool;
 
 /**
@@ -16,9 +12,6 @@ public class PracticeTool extends javax.swing.JFrame {
     public PracticeTool() {
         initComponents();
     }
-
-    // Objects & Global Variables
-    ControlHandler control = new ControlHandler();
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,8 +40,10 @@ public class PracticeTool extends javax.swing.JFrame {
         btnStart = new javax.swing.JButton();
         lblHistory = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Practice Tool by Allen");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         tblHistory.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         tblHistory.setModel(new javax.swing.table.DefaultTableModel(
@@ -132,7 +127,7 @@ public class PracticeTool extends javax.swing.JFrame {
                 .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNotes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtNotes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -144,21 +139,16 @@ public class PracticeTool extends javax.swing.JFrame {
             .addGroup(pnlDifficultyLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlDifficultyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDifficultyLayout.createSequentialGroup()
-                        .addGroup(pnlDifficultyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEasy, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAverage, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnHard, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDifficultyLayout.createSequentialGroup()
-                        .addGap(0, 48, Short.MAX_VALUE)
-                        .addGroup(pnlDifficultyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDifficultyLayout.createSequentialGroup()
-                                .addComponent(pnlCustom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDifficultyLayout.createSequentialGroup()
-                                .addComponent(lblDifficulty)
-                                .addGap(46, 46, 46))))))
+                    .addComponent(btnEasy, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAverage, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHard, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlCustom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDifficultyLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblDifficulty)
+                .addGap(66, 66, 66))
         );
         pnlDifficultyLayout.setVerticalGroup(
             pnlDifficultyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,12 +163,13 @@ public class PracticeTool extends javax.swing.JFrame {
                         .addComponent(btnAverage)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnHard)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(pnlCustom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addGap(0, 69, Short.MAX_VALUE))
+                    .addGroup(pnlDifficultyLayout.createSequentialGroup()
+                        .addComponent(pnlCustom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
-        btnStart.setBackground(new java.awt.Color(0, 0, 204));
+        btnStart.setBackground(new java.awt.Color(0, 0, 255));
         btnStart.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
         btnStart.setText("START PRACTICE");
         btnStart.addActionListener(new java.awt.event.ActionListener() {
@@ -197,16 +188,16 @@ public class PracticeTool extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(pnlDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlStartLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                        .addGap(31, 31, 31)
                         .addComponent(btnStart)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlStartLayout.setVerticalGroup(
             pnlStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlStartLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -220,8 +211,8 @@ public class PracticeTool extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -234,13 +225,11 @@ public class PracticeTool extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlStart, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(pnlStart, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblHistory)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -249,7 +238,11 @@ public class PracticeTool extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        control.checkSelectedBtn();
+        ControlHandler control = new ControlHandler(buttonGroup1.getSelection()); // Pass the buttongGroup1's model as a parameter
+        // Open the NoteGenerator frame if there is a chosen difficulty
+        if (control.checkSelectedBtn() == true) {
+            new NoteGenerator().setVisible(true);
+        }
     }//GEN-LAST:event_btnStartActionPerformed
 
     /**
@@ -288,10 +281,10 @@ public class PracticeTool extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JRadioButton btnAverage;
-    public javax.swing.JRadioButton btnCustom;
-    public javax.swing.JRadioButton btnEasy;
-    public javax.swing.JRadioButton btnHard;
+    public static javax.swing.JRadioButton btnAverage;
+    public static javax.swing.JRadioButton btnCustom;
+    public static javax.swing.JRadioButton btnEasy;
+    public static javax.swing.JRadioButton btnHard;
     private javax.swing.JButton btnStart;
     public javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -303,7 +296,7 @@ public class PracticeTool extends javax.swing.JFrame {
     private javax.swing.JPanel pnlDifficulty;
     private javax.swing.JPanel pnlStart;
     private javax.swing.JTable tblHistory;
-    private javax.swing.JTextField txtNotes;
-    private javax.swing.JTextField txtTime;
+    public static javax.swing.JTextField txtNotes;
+    public static javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables
 }
