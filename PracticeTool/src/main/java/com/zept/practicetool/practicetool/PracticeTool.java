@@ -238,9 +238,9 @@ public class PracticeTool extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        ControlHandler control = new ControlHandler(buttonGroup1.getSelection()); // Pass the buttongGroup1's model as a parameter
+        ControlHandler control = new ControlHandler(); // Pass the buttongGroup1's model as a parameter
         // Open the NoteGenerator frame if there is a chosen difficulty
-        if (control.checkSelectedBtn() == true) {
+        if (control.checkSelectedBtn(buttonGroup1.getSelection()) == true) {
             new NoteGenerator().setVisible(true);
         }
     }//GEN-LAST:event_btnStartActionPerformed
