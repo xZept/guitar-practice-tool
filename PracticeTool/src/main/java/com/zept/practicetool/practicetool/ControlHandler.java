@@ -88,7 +88,7 @@ class ControlHandler {
                     ddMinute = dFormat.format(minutes);
                     NoteGenerator.lblTimer.setText(ddMinute + ":" + ddSecond);
                 }
-                if (minutes <= 0 && seconds <= 0) {
+                if (minutes <= 00 && seconds <= 00) {
                     timer.stop();
                 }
             }
@@ -96,6 +96,7 @@ class ControlHandler {
         timer.start();
     }
     
+    // Return the instance of this class
     public static ControlHandler getInstance() {
         return obj;
     }
