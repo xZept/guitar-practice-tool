@@ -52,7 +52,8 @@ public class NoteGenerator extends javax.swing.JFrame {
 
         lblTimer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblTimer.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblTimer.setText("-");
+        lblTimer.setText("00:00");
+        lblTimer.setToolTipText("");
 
         btnNext.setBackground(new java.awt.Color(0, 0, 255));
         btnNext.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
@@ -134,11 +135,12 @@ public class NoteGenerator extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        ControlHandler control = new ControlHandler();
-        
-        for (int i = 0; i < control.getNoOfNotes(); i++) {
+        ControlHandler control = ControlHandler.getInstance(); // Get instance
+        System.out.println(control.getTime());
+        control.countdownTimer();
+        /*for (int i = 0; i < control.getNoOfNotes(); i++) {
             
-        }
+        }*/
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -183,7 +185,7 @@ public class NoteGenerator extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblNote;
     private javax.swing.JLabel lblTime;
-    private javax.swing.JLabel lblTimer;
+    public static javax.swing.JLabel lblTimer;
     private javax.swing.JPanel pnl1;
     // End of variables declaration//GEN-END:variables
 }

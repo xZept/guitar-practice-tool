@@ -2,24 +2,29 @@ package com.zept.practicetool.practicetool;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.Random;
 import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-
 /**
  *
  * @author Allen James Laxamana
  */
-public class ControlHandler {
-    private int time = 0;
-    private int noOfNotes = 0;
-    private ButtonModel selectedButton;
+class ControlHandler {
+    // Singleton class to prevent multiple instances
+    static ControlHandler obj = new ControlHandler();
+    private ControlHandler () {
+        
+    }
+    private int time, noOfNotes, minutes, seconds;
+    DecimalFormat dFormat = new DecimalFormat("00");
+    private String ddMinute, ddSecond;
+    Timer timer;
     
     // Check what difficulty is chosen then set a value to the variables that will determine the difficulty
     // Also checks if there is a selected difficulty
     public boolean checkSelectedBtn(ButtonModel selectedButton) {
-       this.selectedButton = selectedButton;
        if (selectedButton == null) {
            JOptionPane.showMessageDialog(null, "Please choose a difficulty");
            return false;
@@ -27,29 +32,28 @@ public class ControlHandler {
        else if (selectedButton == PracticeTool.btnEasy.getModel()) {
            time = 60;
            noOfNotes = 10;
-           return true;
        }
        else if (selectedButton == PracticeTool.btnAverage.getModel()) {
            time = 30;
            noOfNotes = 20;
-           return true;
        }
        else if (selectedButton == PracticeTool.btnHard.getModel()) {
            time = 10;
            noOfNotes = 40;
-           return true;
        }
        else {
            try {
                 time = Integer.parseInt(PracticeTool.txtTime.getText());
                 noOfNotes = Integer.parseInt(PracticeTool.txtNotes.getText());
-                return true;
            }
            catch (NumberFormatException e) {
                JOptionPane.showMessageDialog(null, "Invalid input");
                return false;
            }
        }
+       minutes = time / 60; // Convert time to minutes
+       seconds = (time - (60 * minutes)); // Convert time to seconds
+       return true;
     }
     
     public int getTime() {
@@ -68,17 +72,31 @@ public class ControlHandler {
         return randomNote;
     }
     
-    
-    /*
-    public void countdownTimer () {
-        Timer timer = new Timer(1000, new ActionListener() {
+    public void countdownTimer() {
+        timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int seconds = getTime();
+                seconds--;
+                ddSecond = dFormat.format(seconds);
+                ddMinute = dFormat.format(minutes);
+                NoteGenerator.lblTimer.setText(ddMinute + ":" + ddSecond);
+
+                if (seconds <= -1) {
+                    seconds = 59;
+                    minutes--;
+                    ddSecond = dFormat.format(seconds);
+                    ddMinute = dFormat.format(minutes);
+                    NoteGenerator.lblTimer.setText(ddMinute + ":" + ddSecond);
+                }
+                if (minutes <= 0 && seconds <= 0) {
+                    timer.stop();
+                }
             }
-        }) {
-        };
-        
+        });
+        timer.start();
     }
-*/
+    
+    public static ControlHandler getInstance() {
+        return obj;
+    }
 }
