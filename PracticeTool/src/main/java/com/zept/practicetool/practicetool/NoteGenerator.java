@@ -17,6 +17,8 @@ public class NoteGenerator extends javax.swing.JFrame {
         initComponents();
     }
 
+    ControlHandler control = ControlHandler.getInstance(); // Get instance
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,6 +40,9 @@ public class NoteGenerator extends javax.swing.JFrame {
         setTitle("Note Generator");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -62,6 +67,11 @@ public class NoteGenerator extends javax.swing.JFrame {
         btnStop.setBackground(new java.awt.Color(204, 0, 0));
         btnStop.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
         btnStop.setText("STOP");
+        btnStop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStopActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -134,14 +144,23 @@ public class NoteGenerator extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        ControlHandler control = ControlHandler.getInstance(); // Get instance
-        System.out.println(control.getTime());
         control.countdownTimer();
         for (int i = 0; i < control.getNoOfNotes(); i++) {
             lblNote.setText(control.generateRandomNote());
-            System.out.println(control.generateRandomNote());
         }
     }//GEN-LAST:event_formWindowOpened
+
+    // Stop the timer and close the window
+    private void btnStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopActionPerformed
+        control.stopTimer();
+        dispose();
+    }//GEN-LAST:event_btnStopActionPerformed
+
+    // Stop the timer and close the window
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        control.stopTimer();
+        dispose();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

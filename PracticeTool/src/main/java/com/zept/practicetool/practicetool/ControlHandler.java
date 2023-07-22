@@ -51,8 +51,6 @@ class ControlHandler {
                return false;
            }
        }
-       minutes = time / 60; // Convert time to minutes
-       seconds = (time - (60 * minutes)); // Convert time to seconds
        return true;
     }
     
@@ -73,6 +71,8 @@ class ControlHandler {
     }
     
     public void countdownTimer() {
+        minutes = time / 60; // Convert time to minutes
+        seconds = (time - (60 * minutes)); // Convert time to seconds
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -94,6 +94,12 @@ class ControlHandler {
             }
         });
         timer.start();
+    }
+    
+    public void stopTimer() {
+        if (timer != null && timer.isRunning()) {
+            timer.stop();
+        }
     }
     
     // Return the instance of this class

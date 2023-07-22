@@ -13,6 +13,8 @@ public class PracticeTool extends javax.swing.JFrame {
         initComponents();
     }
     
+    ControlHandler control = ControlHandler.getInstance(); // Get instance
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -239,7 +241,6 @@ public class PracticeTool extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        ControlHandler control = ControlHandler.getInstance(); // Get instance
         // Open the NoteGenerator frame if there is a chosen difficulty
         if (control.checkSelectedBtn(buttonGroup1.getSelection()) == true) {
             new NoteGenerator().setVisible(true);
