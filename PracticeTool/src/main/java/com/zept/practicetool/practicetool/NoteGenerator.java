@@ -4,6 +4,8 @@
  */
 package com.zept.practicetool.practicetool;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Allen James Laxamana
@@ -162,32 +164,48 @@ public class NoteGenerator extends javax.swing.JFrame {
         startNextIteration();
     }//GEN-LAST:event_formWindowOpened
 
-    int i = 0; // Class variable that will be for iteration
+    // Class variables
+    int i = 0; //  For iteration
+    int score = 0;
+    int total = control.getNoOfNotes();
     private void startNextIteration() {
         if (i < control.getNoOfNotes()) {
             lblNote.setText(control.generateRandomNote());
-            // Restart the timer
-            control.stopTimer();
-            control.countdownTimer();
             i++;
         }
+        else {
+            control.stopTimer();
+            JOptionPane.showMessageDialog(null,"Score: " + score + "/" + total); // For testing
+            resetVariables();
+            dispose();
+        }
+        
     }
     
     // Stop the timer and close the window
     private void btnStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopActionPerformed
         control.stopTimer();
-        i = 0; // Reset the iteration variable
+        resetVariables();
         dispose();
     }//GEN-LAST:event_btnStopActionPerformed
 
     // Stop the timer and close the window
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         control.stopTimer();
-        i = 0; // Reset the iteration variable
+        resetVariables();
         dispose();
     }//GEN-LAST:event_formWindowClosing
 
+    // Reset the score and iteration variables to prevent errors
+    private void resetVariables() {
+        score = 0;
+        i = 0;
+    }
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        score += control.getPoint(); // Add score or point
+        // Restart the timer
+        control.stopTimer();
+        control.countdownTimer();
         startNextIteration();
     }//GEN-LAST:event_btnNextActionPerformed
 

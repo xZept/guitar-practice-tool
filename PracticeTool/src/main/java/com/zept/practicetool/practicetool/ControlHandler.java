@@ -43,7 +43,7 @@ class ControlHandler {
        }
        else {
            try {
-                time = Integer.parseInt(PracticeTool.txtTime.getText());
+                time = Integer.parseInt(PracticeTool.txtTime.getText()) + 1;
                 noOfNotes = Integer.parseInt(PracticeTool.txtNotes.getText());
            }
            catch (NumberFormatException e) {
@@ -105,5 +105,16 @@ class ControlHandler {
     // Return the instance of this class
     public static ControlHandler getInstance() {
         return obj;
+    }
+    
+    // Check if the user is eligible to a point
+    public int getPoint() {
+        // Add score if the user finds the note before the given time
+        if (minutes > 0 || seconds > 0) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
     }
 }
