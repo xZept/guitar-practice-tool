@@ -84,6 +84,11 @@ public class NoteGenerator extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 102, 0));
         jButton1.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
         jButton1.setText("SKIP");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -201,13 +206,22 @@ public class NoteGenerator extends javax.swing.JFrame {
         score = 0;
         i = 0;
     }
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        score += control.getPoint(); // Add score or point
-        // Restart the timer
+    
+    // Reset the timer 
+    private void resetTimer() {
         control.stopTimer();
         control.countdownTimer();
+    }
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        score += control.getPoint(); // Add score or point
+        resetTimer();
         startNextIteration();
     }//GEN-LAST:event_btnNextActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        startNextIteration();
+        resetTimer();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
