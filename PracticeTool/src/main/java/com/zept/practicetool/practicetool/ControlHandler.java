@@ -3,10 +3,13 @@ package com.zept.practicetool.practicetool;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Allen James Laxamana
@@ -18,6 +21,7 @@ class ControlHandler {
         
     }
     private int time, noOfNotes, minutes, seconds;
+    public int remainingTime;
     DecimalFormat dFormat = new DecimalFormat("00");
     private String ddMinute, ddSecond;
     Timer timer;
@@ -117,4 +121,27 @@ class ControlHandler {
             return 0;
         }
     }
+    
+    // Get the date today and return it as string 
+    public String getCurrentDate() {
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String dateString = currentDate.format(formatter);
+        return dateString;
+    }
+    
+    // Add the remaining time
+    public void addTime() {
+        remainingTime += time;
+    }
+    
+    // Return the total accumulated remaining time as a integer
+    public int getRemainingTime() {
+        return remainingTime;
+    }
+    
+    /*public DefaultTableModel retrieveData() {
+        DefaultTableModel model = new DefaultTableModel();
+        String sql = "SELECT * FROM history"; // Select all records from the table
+    */
 }

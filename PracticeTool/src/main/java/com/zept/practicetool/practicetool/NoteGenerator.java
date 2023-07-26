@@ -4,8 +4,6 @@
  */
 package com.zept.practicetool.practicetool;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Allen James Laxamana
@@ -20,6 +18,7 @@ public class NoteGenerator extends javax.swing.JFrame {
     }
 
     ControlHandler control = ControlHandler.getInstance(); // Get instance
+    Database obj = new Database(); 
         
     /**
      * This method is called from within the constructor to initialize the form.
@@ -180,7 +179,7 @@ public class NoteGenerator extends javax.swing.JFrame {
         }
         else {
             control.stopTimer();
-            JOptionPane.showMessageDialog(null,"Score: " + score + "/" + total); // For testing
+            obj.insertToDB(control.getCurrentDate(),total,control.getRemainingTime());
             resetVariables();
             dispose();
         }
@@ -205,6 +204,7 @@ public class NoteGenerator extends javax.swing.JFrame {
     private void resetVariables() {
         score = 0;
         i = 0;
+        control.remainingTime = 0;
     }
     
     // Reset the timer 
@@ -212,8 +212,10 @@ public class NoteGenerator extends javax.swing.JFrame {
         control.stopTimer();
         control.countdownTimer();
     }
+    
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         score += control.getPoint(); // Add score or point
+        control.addTime();
         resetTimer();
         startNextIteration();
     }//GEN-LAST:event_btnNextActionPerformed

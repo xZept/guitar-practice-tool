@@ -14,21 +14,25 @@ public class Connect {
     // Connection string
     static String url = "jdbc:sqlite:C:/Users/Allen James Laxamana/Documents/NetBeansProjects/PracticeTool/db/practicetool.db";
     static Connection con = null;
-    // Connect to te database
-    public static void connect() {
+    // Connect to the database
+    public static Connection connect() {
         try {
             con = DriverManager.getConnection(url);
             System.out.println("Connection to SQLite has been established.");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        } finally {
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
+        }
+        return con;
+    }
+    
+    // Terminate database connection
+    public static void closeConnection() {
+        try {
+            if (con != null) {
+                con.close();
             }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
     
@@ -37,8 +41,8 @@ public class Connect {
         String sql = "CREATE TABLE IF NOT EXISTS history (\n"
             + "id integer PRIMARY KEY,\n" 
             + "date text NOT NULL,\n"
-            + "itemNo integer,\n"
-            + "duration real\n"
+            + "noOfNotes integer,\n"
+            + "aveDuration real\n"
             + ");";
         try {
             con = DriverManager.getConnection(url);
