@@ -13,6 +13,9 @@ public class PracticeTool extends javax.swing.JFrame {
      */
     public PracticeTool() {
         initComponents();
+        // Load the table upon startup
+        Database db = new Database();
+        updateTable(db.retrieveData());
     }
     
     ControlHandler control = ControlHandler.getInstance(); // Get instance
