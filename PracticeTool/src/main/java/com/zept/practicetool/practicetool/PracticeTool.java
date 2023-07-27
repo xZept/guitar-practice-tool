@@ -78,6 +78,7 @@ public class PracticeTool extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblHistory.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tblHistory);
 
         pnlStart.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -217,6 +218,11 @@ public class PracticeTool extends javax.swing.JFrame {
         btnClear.setBackground(new java.awt.Color(204, 0, 0));
         btnClear.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
         btnClear.setText("CLEAR");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,6 +273,13 @@ public class PracticeTool extends javax.swing.JFrame {
             new NoteGenerator().setVisible(true);
         }
     }//GEN-LAST:event_btnStartActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // Delete the history and update the table
+        Database db = new Database();
+        db.clearHistory();
+        updateTable(db.retrieveData());
+    }//GEN-LAST:event_btnClearActionPerformed
 
     // Update the table in the UI
     public static void updateTable(DefaultTableModel tableModel) {

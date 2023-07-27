@@ -61,4 +61,24 @@ public class Database extends Connect {
         }
         return model;
     }
+    
+    public void clearHistory() {
+        // Show a conformation pop-up window
+        int result = JOptionPane.showConfirmDialog(null,"Permanently delete the history?","Confirmation",JOptionPane.YES_NO_OPTION);
+        // Execute deletion upon user confirmation
+        if (result == JOptionPane.YES_OPTION) {
+            String sql = "DELETE FROM history";
+            try {
+                Connection conn = connect();
+                PreparedStatement delete = conn.prepareStatement(sql);
+                delete.executeUpdate();
+            }
+            catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+            finally {
+                closeConnection();
+            }
+        }
+    }
 }
