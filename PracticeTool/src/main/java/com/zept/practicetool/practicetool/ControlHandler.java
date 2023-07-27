@@ -9,7 +9,6 @@ import java.util.Random;
 import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Allen James Laxamana
@@ -139,9 +138,4 @@ class ControlHandler {
     public int getRemainingTime() {
         return remainingTime;
     }
-    
-    /*public DefaultTableModel retrieveData() {
-        DefaultTableModel model = new DefaultTableModel();
-        String sql = "SELECT * FROM history"; // Select all records from the table
-    */
 }

@@ -1,5 +1,7 @@
 package com.zept.practicetool.practicetool;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Allen James Laxamana
@@ -54,7 +56,7 @@ public class PracticeTool extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Date", "Notes", "Duration"
+                "Date", "Notes", "Average Time"
             }
         ) {
             Class[] types = new Class [] {
@@ -215,13 +217,15 @@ public class PracticeTool extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(lblHistory)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                        .addComponent(lblHistory)
+                        .addGap(115, 115, 115))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,6 +251,11 @@ public class PracticeTool extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnStartActionPerformed
 
+    // Update the table in the UI
+    public static void updateTable(DefaultTableModel tableModel) {
+        tblHistory.setModel(tableModel);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -297,7 +306,7 @@ public class PracticeTool extends javax.swing.JFrame {
     private javax.swing.JPanel pnlCustom;
     private javax.swing.JPanel pnlDifficulty;
     private javax.swing.JPanel pnlStart;
-    private javax.swing.JTable tblHistory;
+    public static javax.swing.JTable tblHistory;
     public static javax.swing.JTextField txtNotes;
     public static javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables

@@ -18,7 +18,7 @@ public class NoteGenerator extends javax.swing.JFrame {
     }
 
     ControlHandler control = ControlHandler.getInstance(); // Get instance
-    Database obj = new Database(); 
+    Database db = new Database(); 
         
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,7 +36,7 @@ public class NoteGenerator extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnNext = new javax.swing.JButton();
         btnStop = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnSkip = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Note Generator");
@@ -80,12 +80,12 @@ public class NoteGenerator extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
-        jButton1.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
-        jButton1.setText("SKIP");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSkip.setBackground(new java.awt.Color(255, 102, 0));
+        btnSkip.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        btnSkip.setText("SKIP");
+        btnSkip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSkipActionPerformed(evt);
             }
         });
 
@@ -97,7 +97,7 @@ public class NoteGenerator extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnStop, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSkip, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -107,7 +107,7 @@ public class NoteGenerator extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnNext)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnSkip)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnStop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -179,7 +179,8 @@ public class NoteGenerator extends javax.swing.JFrame {
         }
         else {
             control.stopTimer();
-            obj.insertToDB(control.getCurrentDate(),total,control.getRemainingTime());
+            db.insertToDB(control.getCurrentDate(),total,(control.getRemainingTime() / total) );
+            PracticeTool.updateTable(db.retrieveData()); // Pass the table model as a parameter for updating the table
             resetVariables();
             dispose();
         }
@@ -220,10 +221,10 @@ public class NoteGenerator extends javax.swing.JFrame {
         startNextIteration();
     }//GEN-LAST:event_btnNextActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSkipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkipActionPerformed
         startNextIteration();
         resetTimer();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSkipActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,8 +264,8 @@ public class NoteGenerator extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnSkip;
     private javax.swing.JButton btnStop;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblNote;
     private javax.swing.JLabel lblTime;
