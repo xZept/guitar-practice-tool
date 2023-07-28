@@ -19,8 +19,7 @@ class ControlHandler {
     private ControlHandler () {
         
     }
-    private int time, noOfNotes, minutes, seconds;
-    public int remainingTime;
+    private int time, noOfNotes, minutes, seconds, remainingSeconds, remainingMinutes, totalSeconds, totalMinutes, remainingTime;
     DecimalFormat dFormat = new DecimalFormat("00");
     private String ddMinute, ddSecond;
     Timer timer;
@@ -46,7 +45,7 @@ class ControlHandler {
        }
        else {
            try {
-                time = Integer.parseInt(PracticeTool.txtTime.getText()) + 1;
+                time = Integer.parseInt(PracticeTool.txtTime.getText());
                 noOfNotes = Integer.parseInt(PracticeTool.txtNotes.getText());
            }
            catch (NumberFormatException e) {
@@ -83,13 +82,16 @@ class ControlHandler {
                 ddSecond = dFormat.format(seconds);
                 ddMinute = dFormat.format(minutes);
                 NoteGenerator.lblTimer.setText(ddMinute + ":" + ddSecond);
-
+                // Store the remaining time
+                remainingMinutes = Integer.parseInt(ddMinute);
+                remainingSeconds = Integer.parseInt(ddSecond);
                 if (seconds <= -1) {
                     seconds = 59;
                     minutes--;
                     ddSecond = dFormat.format(seconds);
                     ddMinute = dFormat.format(minutes);
-                    NoteGenerator.lblTimer.setText(ddMinute + ":" + ddSecond);
+                    NoteGenerator.lblTimer.setText(ddMinute + ":" + ddSecond);                
+                    
                 }
                 if (minutes <= 00 && seconds <= 00) {
                     timer.stop();
@@ -131,11 +133,16 @@ class ControlHandler {
     
     // Add the remaining time
     public void addTime() {
-        remainingTime += time;
+        totalSeconds += remainingSeconds;
+        totalMinutes += remainingMinutes;
     }
     
     // Return the total accumulated remaining time as a integer
-    public int getRemainingTime() {
+    public int getRemainingTime(int totalItems) {
+        if (totalMinutes >= 1) {
+            totalSeconds += 60;
+        }
+        remainingTime = time - (totalSeconds / totalItems);
         return remainingTime;
     }
 }

@@ -179,7 +179,7 @@ public class NoteGenerator extends javax.swing.JFrame {
         }
         else {
             control.stopTimer();
-            db.insertToDB(control.getCurrentDate(),total,(control.getRemainingTime() / total) );
+            db.insertToDB(control.getCurrentDate(),total, control.getRemainingTime(total));
             PracticeTool.updateTable(db.retrieveData()); // Pass the table model as a parameter for updating the table
             resetVariables();
             dispose();
@@ -205,7 +205,6 @@ public class NoteGenerator extends javax.swing.JFrame {
     private void resetVariables() {
         score = 0;
         i = 0;
-        control.remainingTime = 0;
     }
     
     // Reset the timer 
