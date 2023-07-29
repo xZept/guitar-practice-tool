@@ -40,9 +40,9 @@ public class Connect {
     public static void createNewTable() {
         String sql = "CREATE TABLE IF NOT EXISTS history (\n"
             + "id integer PRIMARY KEY,\n" 
-            + "date text NOT NULL,\n"
+            + "date text NOT NULL,\n" 
             + "noOfNotes integer,\n"
-            + "aveDuration real\n"
+            + "score real\n"
             + ");";
         try {
             con = DriverManager.getConnection(url);
@@ -63,3 +63,6 @@ public class Connect {
         }
     }
 }
+
+
+

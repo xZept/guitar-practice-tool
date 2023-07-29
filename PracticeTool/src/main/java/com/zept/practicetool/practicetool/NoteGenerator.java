@@ -63,7 +63,7 @@ public class NoteGenerator extends javax.swing.JFrame {
         lblTimer.setToolTipText("");
 
         btnNext.setBackground(new java.awt.Color(0, 0, 255));
-        btnNext.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        btnNext.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 12)); // NOI18N
         btnNext.setText("NEXT");
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +72,7 @@ public class NoteGenerator extends javax.swing.JFrame {
         });
 
         btnStop.setBackground(new java.awt.Color(204, 0, 0));
-        btnStop.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        btnStop.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 12)); // NOI18N
         btnStop.setText("STOP");
         btnStop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +81,7 @@ public class NoteGenerator extends javax.swing.JFrame {
         });
 
         btnSkip.setBackground(new java.awt.Color(255, 102, 0));
-        btnSkip.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        btnSkip.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 12)); // NOI18N
         btnSkip.setText("SKIP");
         btnSkip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +179,7 @@ public class NoteGenerator extends javax.swing.JFrame {
         }
         else {
             control.stopTimer();
-            db.insertToDB(control.getCurrentDate(),total, control.getRemainingTime(total));
+            db.insertToDB(control.getCurrentDate(),total, score);
             PracticeTool.updateTable(db.retrieveData()); // Pass the table model as a parameter for updating the table
             resetVariables();
             dispose();
@@ -215,7 +215,6 @@ public class NoteGenerator extends javax.swing.JFrame {
     
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         score += control.getPoint(); // Add score or point
-        control.addTime();
         resetTimer();
         startNextIteration();
     }//GEN-LAST:event_btnNextActionPerformed

@@ -17,14 +17,14 @@ public class Database extends Connect {
         createNewTable(); // Create a database if there is none
     }
     // Insert the records to database
-    public void insertToDB(String date, int noOfNotes, int aveDuration) {
-        String sql = "INSERT INTO history(date,noOfNotes,aveDuration) VALUES(?,?,?)";
+    public void insertToDB(String date, int noOfNotes, int score) {
+        String sql = "INSERT INTO history(date,noOfNotes,score) VALUES(?,?,?)";
         try {
             Connection conn = connect();
             PreparedStatement insert = conn.prepareStatement(sql);
             insert.setString(1,date);
             insert.setInt(2, noOfNotes);
-            insert.setInt(3, aveDuration);
+            insert.setInt(3, score);
             insert.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -43,14 +43,14 @@ public class Database extends Connect {
             ResultSet resultSet = insert.executeQuery();
             // Set columns for the table model
             model.addColumn("Date");
-            model.addColumn("No. of Notes");
-            model.addColumn("Average Time");
+            model.addColumn("Notes");
+            model.addColumn("Score");
             // Loop through the results and add each data to the table
             while (resultSet.next()) {
                 String date = resultSet.getString("date");
                 int noOfNotes = resultSet.getInt("noOfNotes");
-                int aveDuration = resultSet.getInt("aveDuration");
-                model.addRow(new Object[]{date, noOfNotes,aveDuration});
+                int score = resultSet.getInt("score");
+                model.addRow(new Object[]{date, noOfNotes, score});
             }
         }
         catch (SQLException e) {

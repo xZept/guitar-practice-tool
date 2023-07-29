@@ -90,8 +90,11 @@ class ControlHandler {
                     minutes--;
                     ddSecond = dFormat.format(seconds);
                     ddMinute = dFormat.format(minutes);
-                    NoteGenerator.lblTimer.setText(ddMinute + ":" + ddSecond);                
-                    
+                    NoteGenerator.lblTimer.setText(ddMinute + ":" + ddSecond);   
+                    // Store the remaining time
+                    remainingMinutes = Integer.parseInt(ddMinute);
+                    remainingSeconds = Integer.parseInt(ddSecond);
+
                 }
                 if (minutes <= 00 && seconds <= 00) {
                     timer.stop();
@@ -129,20 +132,5 @@ class ControlHandler {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String dateString = currentDate.format(formatter);
         return dateString;
-    }
-    
-    // Add the remaining time
-    public void addTime() {
-        totalSeconds += remainingSeconds;
-        totalMinutes += remainingMinutes;
-    }
-    
-    // Return the total accumulated remaining time as a integer
-    public int getRemainingTime(int totalItems) {
-        if (totalMinutes >= 1) {
-            totalSeconds += 60;
-        }
-        remainingTime = time - (totalSeconds / totalItems);
-        return remainingTime;
     }
 }

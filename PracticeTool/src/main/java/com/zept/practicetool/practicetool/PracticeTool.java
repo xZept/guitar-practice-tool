@@ -13,7 +13,6 @@ public class PracticeTool extends javax.swing.JFrame {
      */
     public PracticeTool() {
         initComponents();
-        // Load the table upon startup
         Database db = new Database();
         updateTable(db.retrieveData());
     }
@@ -60,7 +59,7 @@ public class PracticeTool extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Date", "Notes", "Average Time"
+                "Date", "Notes", "Score"
             }
         ) {
             Class[] types = new Class [] {
@@ -85,7 +84,7 @@ public class PracticeTool extends javax.swing.JFrame {
 
         pnlDifficulty.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lblDifficulty.setFont(new java.awt.Font("OCR A Extended", 1, 12)); // NOI18N
+        lblDifficulty.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 12)); // NOI18N
         lblDifficulty.setText("Difficulty");
 
         buttonGroup1.add(btnEasy);
@@ -137,7 +136,7 @@ public class PracticeTool extends javax.swing.JFrame {
                 .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNotes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(txtNotes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -158,7 +157,7 @@ public class PracticeTool extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDifficultyLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblDifficulty)
-                .addGap(66, 66, 66))
+                .addGap(79, 79, 79))
         );
         pnlDifficultyLayout.setVerticalGroup(
             pnlDifficultyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,14 +172,14 @@ public class PracticeTool extends javax.swing.JFrame {
                         .addComponent(btnAverage)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnHard)
-                        .addGap(0, 69, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnlDifficultyLayout.createSequentialGroup()
                         .addComponent(pnlCustom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );
 
         btnStart.setBackground(new java.awt.Color(0, 0, 255));
-        btnStart.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        btnStart.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 12)); // NOI18N
         btnStart.setText("START PRACTICE");
         btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,7 +197,7 @@ public class PracticeTool extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(pnlDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlStartLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(48, 48, 48)
                         .addComponent(btnStart)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -212,11 +211,11 @@ public class PracticeTool extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
-        lblHistory.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        lblHistory.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 12)); // NOI18N
         lblHistory.setText("HISTORY");
 
         btnClear.setBackground(new java.awt.Color(204, 0, 0));
-        btnClear.setFont(new java.awt.Font("OCR A Extended", 1, 14)); // NOI18N
+        btnClear.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 12)); // NOI18N
         btnClear.setText("CLEAR");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,39 +227,36 @@ public class PracticeTool extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lblHistory)
-                                .addGap(124, 124, 124))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(lblHistory)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                         .addComponent(btnClear)
-                        .addGap(120, 120, 120))))
+                        .addGap(99, 99, 99))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlStart, javax.swing.GroupLayout.PREFERRED_SIZE, 219, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlStart, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblHistory)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClear)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(btnClear)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
