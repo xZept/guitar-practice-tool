@@ -1,5 +1,6 @@
 package com.zept.practicetool.practicetool;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,9 +11,10 @@ import java.sql.Statement;
  * @author Allen James Laxamana
  */
 public class Connect {
-
+    // Get the present working directory
+    static String relativePath = System.getProperty("user.dir") + File.separator + "db" + File.separator + "practicetool.db";
     // Connection string
-    static String url = "jdbc:sqlite:C:/Users/Allen James Laxamana/Documents/NetBeansProjects/PracticeTool/db/practicetool.db";
+    static String url = "jdbc:sqlite:" + relativePath;
     static Connection con = null;
     // Connect to the database
     public static Connection connect() {

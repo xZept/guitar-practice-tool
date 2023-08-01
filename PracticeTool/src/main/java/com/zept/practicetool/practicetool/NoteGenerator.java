@@ -50,14 +50,14 @@ public class NoteGenerator extends javax.swing.JFrame {
             }
         });
 
-        lblTime.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
+        lblTime.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 14)); // NOI18N
         lblTime.setText("Time:");
 
         lblNote.setFont(new java.awt.Font("MS Gothic", 1, 36)); // NOI18N
         lblNote.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNote.setText("-");
 
-        lblTimer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblTimer.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 14)); // NOI18N
         lblTimer.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblTimer.setText("00:00");
         lblTimer.setToolTipText("");
@@ -94,7 +94,7 @@ public class NoteGenerator extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnStop, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSkip, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,15 +118,21 @@ public class NoteGenerator extends javax.swing.JFrame {
         pnl1Layout.setHorizontalGroup(
             pnl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addGroup(pnl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lblNote, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnl1Layout.createSequentialGroup()
-                        .addComponent(lblTime)
-                        .addGap(28, 28, 28)
-                        .addComponent(lblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGroup(pnl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl1Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(lblNote, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnl1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(pnl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnl1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnl1Layout.createSequentialGroup()
+                                .addComponent(lblTime)
+                                .addGap(28, 28, 28)
+                                .addComponent(lblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         pnl1Layout.setVerticalGroup(
             pnl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,9 +143,9 @@ public class NoteGenerator extends javax.swing.JFrame {
                 .addGroup(pnl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTime)
                     .addComponent(lblTimer))
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

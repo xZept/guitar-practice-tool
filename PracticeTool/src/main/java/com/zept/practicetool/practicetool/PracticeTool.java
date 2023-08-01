@@ -44,16 +44,18 @@ public class PracticeTool extends javax.swing.JFrame {
         txtNotes = new javax.swing.JTextField();
         lblNotes = new javax.swing.JLabel();
         lblTime = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         btnStart = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         lblHistory = new javax.swing.JLabel();
         btnClear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Practice Tool by Allen");
+        setTitle("Practice Tool");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
-        tblHistory.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        tblHistory.setFont(new java.awt.Font("Nirmala UI Semilight", 0, 12)); // NOI18N
         tblHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -141,16 +143,24 @@ public class PracticeTool extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 7)); // NOI18N
+        jLabel2.setText("Made by Allen James");
+
         javax.swing.GroupLayout pnlDifficultyLayout = new javax.swing.GroupLayout(pnlDifficulty);
         pnlDifficulty.setLayout(pnlDifficultyLayout);
         pnlDifficultyLayout.setHorizontalGroup(
             pnlDifficultyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDifficultyLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pnlDifficultyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEasy, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAverage, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHard, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDifficultyLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlDifficultyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEasy, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAverage, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnHard, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlDifficultyLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlCustom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -172,10 +182,10 @@ public class PracticeTool extends javax.swing.JFrame {
                         .addComponent(btnAverage)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnHard)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlDifficultyLayout.createSequentialGroup()
-                        .addComponent(pnlCustom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2))
+                    .addComponent(pnlCustom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         btnStart.setBackground(new java.awt.Color(0, 0, 255));
@@ -187,6 +197,8 @@ public class PracticeTool extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout pnlStartLayout = new javax.swing.GroupLayout(pnlStart);
         pnlStart.setLayout(pnlStartLayout);
         pnlStartLayout.setHorizontalGroup(
@@ -194,12 +206,18 @@ public class PracticeTool extends javax.swing.JFrame {
             .addGroup(pnlStartLayout.createSequentialGroup()
                 .addGroup(pnlStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlStartLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pnlDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlStartLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(btnStart)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(pnlStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlStartLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(pnlDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlStartLayout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(btnStart)))
+                        .addGap(0, 21, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlStartLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnlStartLayout.setVerticalGroup(
             pnlStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +226,8 @@ public class PracticeTool extends javax.swing.JFrame {
                 .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(5, 5, 5)
+                .addComponent(jLabel1))
         );
 
         lblHistory.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 12)); // NOI18N
@@ -240,7 +259,7 @@ public class PracticeTool extends javax.swing.JFrame {
                         .addComponent(lblHistory)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addComponent(btnClear)
                         .addGap(99, 99, 99))))
         );
@@ -325,6 +344,8 @@ public class PracticeTool extends javax.swing.JFrame {
     public static javax.swing.JRadioButton btnHard;
     private javax.swing.JButton btnStart;
     public static javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDifficulty;
     private javax.swing.JLabel lblHistory;
