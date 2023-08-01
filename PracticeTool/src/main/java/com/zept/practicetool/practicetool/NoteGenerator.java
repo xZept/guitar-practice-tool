@@ -4,6 +4,9 @@
  */
 package com.zept.practicetool.practicetool;
 
+import java.io.File;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Allen James Laxamana
@@ -19,6 +22,8 @@ public class NoteGenerator extends javax.swing.JFrame {
 
     ControlHandler control = ControlHandler.getInstance(); // Get instance
     Database db = new Database(); 
+    // Retrieve the img from a relative path
+    ImageIcon img = new ImageIcon(System.getProperty("user.dir") + File.separator + "img" + File.separator + "icon.png");
         
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,6 +45,7 @@ public class NoteGenerator extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Note Generator");
+        setIconImage(img.getImage());
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
